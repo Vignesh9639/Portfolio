@@ -1,15 +1,9 @@
-import { getHealth } from "@/lib/api";
+import { Hero } from "@/components/hero/hero";
 
-export default async function Home() {
-  const health = await getHealth();
-
+export default function Home() {
   return (
     <main>
-      <h1>SYSTEM//V</h1>
-
-      <p>API Status: {health.status}</p>
-
-      <p>Service: {health.service}</p>
+      <Hero />
     </main>
   );
 }
