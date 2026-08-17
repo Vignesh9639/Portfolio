@@ -7,6 +7,7 @@ const navigation = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
+  { label: "Resume", href: "#resume" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -55,39 +56,47 @@ export function Navbar() {
     };
   }, [menuOpen]);
 
-  // Detect which section is currently visible.
+  // Detect the section currently closest to the navbar.
   useEffect(() => {
-    const sections = SECTION_IDS.map((id) =>
-      document.getElementById(id),
-    ).filter((section): section is HTMLElement => section !== null);
+    const updateActiveSection = () => {
+      const sections = SECTION_IDS.map((id) =>
+        document.getElementById(id),
+      ).filter((section): section is HTMLElement => section !== null);
 
-    if (!sections.length) {
-      return;
-    }
+      if (!sections.length) {
+        return;
+      }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              a.boundingClientRect.top - b.boundingClientRect.top,
-          );
+      const navbarOffset = 120;
 
-        if (visibleSections.length > 0) {
-          setActiveSection(visibleSections[0].target.id);
+      let currentSection = sections[0];
+
+      for (const section of sections) {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top <= navbarOffset) {
+          currentSection = section;
+        } else {
+          break;
         }
-      },
-      {
-        root: null,
-        rootMargin: "-96px 0px -55% 0px",
-        threshold: 0,
-      },
-    );
+      }
 
-    sections.forEach((section) => observer.observe(section));
+      setActiveSection(currentSection.id);
+    };
 
-    return () => observer.disconnect();
+    // Set the correct section on initial page load.
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   const handleNavigation = (
@@ -104,6 +113,7 @@ export function Navbar() {
     }
 
     const navbarHeight = 80;
+
     const targetPosition =
       target.getBoundingClientRect().top +
       window.scrollY -
@@ -116,6 +126,7 @@ export function Navbar() {
       behavior: "smooth",
     });
 
+    // Immediately update the active indicator when clicked.
     setActiveSection(id);
 
     if (menuOpen) {
@@ -155,7 +166,7 @@ export function Navbar() {
                       onClick={(event) =>
                         handleNavigation(event, item.href)
                       }
-                      className={`relative py-2 font-mono text-xs uppercase tracking-[0.16em] transition-colors duration-300 ${
+                      className={`group relative py-2 font-mono text-xs uppercase tracking-[0.16em] transition-colors duration-300 ${
                         isActive
                           ? "text-accent"
                           : "text-foreground-muted hover:text-accent"
@@ -168,6 +179,14 @@ export function Navbar() {
                         aria-hidden="true"
                         className={`absolute -bottom-1 left-0 h-px bg-accent transition-all duration-300 ${
                           isActive ? "w-full" : "w-0"
+                        }`}
+                      />
+
+                      {/* Subtle active glow */}
+                      <span
+                        aria-hidden="true"
+                        className={`absolute -bottom-1 left-1/2 h-px -translate-x-1/2 bg-accent blur-[3px] transition-all duration-500 ${
+                          isActive ? "w-3/4 opacity-70" : "w-0 opacity-0"
                         }`}
                       />
                     </Link>
