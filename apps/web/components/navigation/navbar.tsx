@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
+
 const navigation = [
   { label: "Work", href: "#work" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
   { label: "Resume", href: "#resume" },
+  { label: "Credentials", href: "#credentials" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -57,6 +59,8 @@ export function Navbar() {
   }, [menuOpen]);
 
   // Detect the section currently closest to the navbar.
+  
+  // Detect the section currently closest to the navbar.
   useEffect(() => {
     const updateActiveSection = () => {
       const sections = SECTION_IDS.map((id) =>
@@ -68,29 +72,33 @@ export function Navbar() {
       }
 
       const navbarOffset = 120;
-
       let currentSection = sections[0];
 
       for (const section of sections) {
-        const rect = section.getBoundingClientRect();
-
-        if (rect.top <= navbarOffset) {
+        if (section.getBoundingClientRect().top <= navbarOffset) {
           currentSection = section;
         } else {
           break;
         }
       }
 
+      // At the bottom of the page, activate the final section.
+      const atPageBottom =
+        window.innerHeight + window.scrollY >=
+        document.documentElement.scrollHeight - 2;
+
+      if (atPageBottom) {
+        currentSection = sections[sections.length - 1];
+      }
+
       setActiveSection(currentSection.id);
     };
 
-    // Set the correct section on initial page load.
     updateActiveSection();
 
     window.addEventListener("scroll", updateActiveSection, {
       passive: true,
     });
-
     window.addEventListener("resize", updateActiveSection);
 
     return () => {
@@ -98,6 +106,7 @@ export function Navbar() {
       window.removeEventListener("resize", updateActiveSection);
     };
   }, []);
+
 
   const handleNavigation = (
     event: React.MouseEvent<HTMLAnchorElement>,

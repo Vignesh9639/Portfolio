@@ -1,25 +1,3 @@
-import { CertificationCard } from "./certification-card";
-
-const certifications = [
-  {
-    index: "01",
-    name: "AWS Certified AI Practitioner",
-    issuer: "Amazon Web Services",
-    issued: "15 AUG 2026",
-    validUntil: "15 AUG 2029",
-    credentialId: "d884bc3d2dce4c8590758dd98e94bc61",
-    href: "/documents/aws-ai-practitioner.pdf",
-  },
-  {
-    index: "02",
-    name: "AWS Certified Cloud Practitioner",
-    issuer: "Amazon Web Services",
-    issued: "16 AUG 2026",
-    validUntil: "16 AUG 2029",
-    credentialId: "f4d5b4546b0e4186a858ba8dce7bbc38",
-    href: "/documents/aws-cloud-practitioner.pdf",
-  },
-];
 
 export function Resume() {
   return (
@@ -30,47 +8,20 @@ export function Resume() {
       {/* Background grid */}
       <div
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          inset-0
-          opacity-[0.018]
-          [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)]
-          [background-size:48px_48px]
-        "
+        className="pointer-events-none absolute inset-0 opacity-[0.018] [background-image:linear-gradient(rgba(255,255,255,0.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.8)_1px,transparent_1px)] [background-size:48px_48px]"
       />
 
       {/* Ambient glow */}
       <div
         aria-hidden="true"
-        className="
-          pointer-events-none
-          absolute
-          right-[-12%]
-          top-[15%]
-          h-[550px]
-          w-[550px]
-          rounded-full
-          bg-accent/[0.025]
-          blur-[140px]
-        "
+        className="pointer-events-none absolute right-[-12%] top-[15%] h-[550px] w-[550px] rounded-full bg-accent/[0.025] blur-[140px]"
       />
 
-      <div
-        className="
-          relative
-          z-10
-          mx-auto
-          w-full
-          max-w-[var(--content-width)]
-          px-[var(--page-padding)]
-          py-24
-          sm:py-28
-          lg:py-36
-        "
-      >
+      <div className="relative z-10 mx-auto w-full max-w-[var(--content-width)] px-[var(--page-padding)] pt-24 pb-12 sm:pt-28 sm:pb-14 lg:pt-36 lg:pb-16">
         {/* Section header */}
-        <div className="grid gap-10 lg:grid-cols-[0.55fr_1.45fr]">
+        
+<div className="grid gap-10 lg:grid-cols-[0.35fr_1.65fr]">
+
           <div className="flex items-start">
             <div className="font-mono text-[9px] uppercase tracking-[0.2em] text-accent sm:text-[10px]">
               <div className="flex items-center gap-3">
@@ -78,7 +29,6 @@ export function Resume() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-50" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_12px_rgba(0,210,225,0.8)]" />
                 </span>
-
                 <span>PROFILE / 05</span>
               </div>
 
@@ -95,37 +45,37 @@ export function Resume() {
               PROFESSIONAL / 002
             </div>
 
-            <h2
-              className="
-                mt-5
-                max-w-5xl
-                text-[clamp(3rem,8vw,7rem)]
-                font-medium
-                uppercase
-                leading-[0.84]
-                tracking-[-0.065em]
-                text-foreground
-              "
-            >
-              RESUME
-              <br />
-              <span className="text-foreground-muted">
-                + CERTIFICATIONS.
-              </span>
-            </h2>
+           
+<h2
+  className="
+    mt-5
+    max-w-5xl
+    text-[clamp(2.8rem,7.5vw,6.5rem)]
+    font-medium
+    uppercase
+    leading-[0.86]
+    tracking-[-0.065em]
+    text-foreground
+  "
+>
+  THE
+  <br />
+  PROFESSIONAL
+  <br />
+  <span className="text-foreground-muted">PROFILE.</span>
+</h2>
+
 
             <div className="mt-8 flex items-start gap-4 sm:mt-10">
               <div className="mt-2 h-px w-8 shrink-0 bg-accent sm:w-12" />
-
               <p className="max-w-2xl text-sm leading-6 text-foreground-muted sm:text-base sm:leading-7">
-                A snapshot of my engineering experience, technical stack, and
-                professional certifications.
+                Experience, technical capabilities, and professional background.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Resume */}
+        {/* Resume document */}
         <div className="mt-20 sm:mt-24 lg:mt-28">
           <div className="grid overflow-hidden border border-border-subtle lg:grid-cols-[1fr_0.42fr]">
             {/* Resume content */}
@@ -143,7 +93,7 @@ export function Resume() {
                   </h3>
 
                   <p className="mt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-foreground-muted sm:text-[10px]">
-                    PROGRAMMER ANALYST INTERN / COGNIZANT
+                    PROGRAMMER ANALYST / COGNIZANT
                   </p>
                 </div>
 
@@ -153,7 +103,7 @@ export function Resume() {
               </div>
 
               <p className="mt-8 max-w-3xl text-sm leading-7 text-foreground-muted sm:text-base">
-                Computer Science Engineering student and software developer
+                Computer Science Engineering graduate and software developer
                 focused on scalable full-stack applications, microservices,
                 AI-driven systems, and modern web technologies.
               </p>
@@ -170,7 +120,6 @@ export function Resume() {
                     <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-foreground-subtle">
                       {label}
                     </p>
-
                     <p className="mt-3 font-mono text-[9px] uppercase leading-5 tracking-[0.1em] text-foreground-muted">
                       {value}
                     </p>
@@ -178,6 +127,7 @@ export function Resume() {
                 ))}
               </div>
 
+              {/* Resume actions */}
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href="/documents/resume.pdf"
@@ -196,8 +146,7 @@ export function Resume() {
                   download
                   className="inline-flex items-center gap-4 border border-border px-5 py-3.5 font-mono text-[10px] uppercase tracking-[0.16em] text-foreground-muted transition-all duration-300 hover:border-accent hover:text-accent"
                 >
-                  Download PDF
-                  <span>↓</span>
+                  Download PDF <span>↓</span>
                 </a>
               </div>
             </div>
@@ -250,38 +199,10 @@ export function Resume() {
           </div>
         </div>
 
-        {/* Certifications */}
-        <div className="mt-24 sm:mt-28 lg:mt-32">
-          <div className="mb-10 flex flex-col justify-between gap-4 border-b border-border-subtle pb-6 sm:flex-row sm:items-end">
-            <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-accent">
-                CREDENTIALS / 02
-              </p>
-
-              <h3 className="mt-4 text-3xl font-medium uppercase tracking-[-0.04em] text-foreground sm:text-4xl">
-                AWS CERTIFICATIONS
-              </h3>
-            </div>
-
-            <p className="max-w-sm font-mono text-[8px] uppercase leading-5 tracking-[0.16em] text-foreground-subtle">
-              VERIFIED PROFESSIONAL CREDENTIALS
-            </p>
-          </div>
-
-          <div className="grid gap-5 lg:grid-cols-2">
-            {certifications.map((certification) => (
-              <CertificationCard
-                key={certification.index}
-                {...certification}
-              />
-            ))}
-          </div>
-        </div>
-
         {/* Footer marker */}
-        <div className="mt-20 flex flex-col justify-between gap-3 border-t border-border-subtle pt-6 font-mono text-[8px] uppercase tracking-[0.18em] text-foreground-subtle sm:flex-row">
+        <div className="mt-12 flex flex-col justify-between gap-3 border-t border-border-subtle pt-6 font-mono text-[8px] uppercase tracking-[0.18em] text-foreground-subtle sm:flex-row">
           <span>SYSTEM//V — PROFILE</span>
-          <span>DOCUMENTS / VERIFIED</span>
+          <span>RESUME / DOCUMENT</span>
         </div>
       </div>
     </section>
