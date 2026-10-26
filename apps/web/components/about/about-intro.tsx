@@ -60,7 +60,7 @@ export function AboutIntro() {
 
           <div className="relative max-w-3xl border-l border-accent/60 pl-6 sm:pl-8">
             <p className="text-base leading-7 text-foreground-muted sm:text-lg sm:leading-8">
-              I&apos;m a Computer Science Engineering student and software
+              I&apos;m a Computer Science Engineering graduate and software
               developer focused on building thoughtful, scalable software.
               My work spans full-stack development, AI and machine learning,
               and cloud technologies, with a constant focus on learning how
